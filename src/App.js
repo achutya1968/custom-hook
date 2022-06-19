@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import Product from "./components/Product";
+import useProductHook from "./components/useProductHook";
+
+export default function App(){
+  const { product } = useProductHook();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <>
+        <h1>Simple Custom Hook</h1>
+        {product &&
+          product?.map((p) => (
+            <Product
+              id={p.id}
+              image={p.image}
+              description={p.description}
+              price={p.price}
+            />
+          ))}
+      </>
     </div>
   );
 }
-
-export default App;
