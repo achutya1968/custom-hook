@@ -4,7 +4,11 @@ import Product from "./components/Product";
 import useProductHook from "./components/useProductHook";
 
 export default function App(){
-  const { product } = useProductHook();
+  const { product,loading } = useProductHook();
+
+  if(loading){
+    return <h1>Loading....</h1>
+  }
 
   return (
     <div className="App">
